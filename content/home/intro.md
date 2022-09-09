@@ -17,6 +17,6 @@ author: admin
 #      path:  # enter filename of a video in /assets/media
 #  css_class: fullscreen
 ---
-<font size="20"> Math 888 </font> 
+<font size="20"> Math 888: Topics in Mathematical Data Science-Causal Inference </font> 
 
 [Why causal inference?](/about/)
