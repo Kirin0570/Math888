@@ -25,7 +25,7 @@ authors:
   - admin
 ---
 
-My name is qilin Li. I am a second-year PhD student in Statitstics. With great interest in the intersection of statistics and computer science, I have been exploring the areas across high-dimensional statistics, machine learning, optimization and network analysis.
+My name is Qilin Li. I am a second-year PhD student in Statitstics. With great interest in the intersection of statistics and computer science, I have been exploring the areas across high-dimensional statistics, machine learning, optimization and network analysis.
 
 I have just passed the PhD qualifying exam and now I am looking for a research opportunity preferably in the areas above. I am also open to the topics relevant to data analysis in some more application-oriented contexts such as biomedical science and sports science.
 
