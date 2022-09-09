@@ -1,5 +1,5 @@
 ---
-title: Homework 1
+title: Hello, there!
 
 # Date published
 date: '2022-9-9T00:00:00Z'
@@ -16,7 +16,7 @@ featured: false
 # Featured image
 # Place an image named `featured.jpg/png` in this page's folder and customize its options here.
 image:
-  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/CpkOjOcXdUY)'
+  caption: ''
   focal_point: ''
   placement: 2
   preview_only: false
