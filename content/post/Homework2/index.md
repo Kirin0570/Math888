@@ -42,6 +42,7 @@ Above is a tip of the iceberg. Indeed, there are a bunch of problems in the cont
 - Data debasing with causal inference,
 - Data augmentation and data denosing with causal inference.
 - Achieving explainability, diversity, and fairness via interpretable and controllable recommendation based on causal inference.
+
 This survey also discusses some open problems:
 - Causal discovery for Recommenation,
 - Causality-aware stable and robust recommendation,
