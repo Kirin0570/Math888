@@ -32,9 +32,6 @@ One way to formulate recommendation in the potential outcome framework is that:
 - Treatment: whether a user used and rated the item,
 - Outcome: User's rating.
 
-
-$$y=f(x)+1$$
-
 We are interested in the average causal effects between these two treatments. Since the assumption of ignorability does not hold in this context, we need to measure and control the confounders.
 
 The relationship between variables will be case by case, depending on the application problem we study. I wish to see the causal recommenders outperform correlation-based recommenders.
