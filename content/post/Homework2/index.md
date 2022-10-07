@@ -55,12 +55,14 @@ The causal inference problem can be formulated as a semi-parametric problem that
 
 Now, we use the following partially linear regression to illustrate motivation clearly.
 
+{{< math >}}
 $$
 \begin{gathered}
 Y=D \theta_0+g_0(X)+U, \quad E[U \mid X, D]=0 \\
 D=m_0(X)+V, \quad E[V \mid X]=0
 \end{gathered}
 $$
+{{< math >}}
 
 Here, $Y$ is the outcome variable, $D$ is the treatment variable, $X$ is a vector of confounding factors, and $U,V$ are disturbances. $\theta_0 $ is the target parameter (causal effect) that we would like to infer. $X$ affect the outcome via the treatment assignment via $m_0(X)$ and the outcome variable via the function $g_0(X)$. $(m_0, g_0)$ are the nuisance parameters. The dimension of $X$ is large relative to the sample size $N$ and we allow it to increase with $N$.
 
