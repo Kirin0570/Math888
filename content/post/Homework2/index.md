@@ -34,7 +34,9 @@ One way [<sup>1</sup>](#2020) to formulate recommendation in the potential outco
 
 We are interested in the average causal effects between these two treatments. Since the assumption of ignorability does not hold in this context, we need to measure and control the confounders($w$).
 
-The relationship between variables will be case by case, depending on the application problem we study. I wish to see the causal recommenders outperform correlation-based recommenders.
+The DAG is as following. I wish to see the causal recommenders outperform correlation-based recommenders.
+
+![DAG](DAG.jpeg)
 
 Above is a tip of the iceberg. Indeed, there are a bunch of problems in the context of recommender system that can be addressed with causal inference. In a recent survey [<sup>2</sup>](#survey), current works are categorized as follows:
 - Data debasing with causal inference,
