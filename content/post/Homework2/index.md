@@ -54,30 +54,38 @@ The causal inference problem can be formulated as a semi-parametric problem that
 **Partially Linear Regression**
 
 Now, we use the following partially linear regression to illustrate motivation clearly.
+
 $$
 \begin{gathered}
 Y=D \theta_0+g_0(X)+U, \quad E[U \mid X, D]=0 \\
 D=m_0(X)+V, \quad E[V \mid X]=0
 \end{gathered}
 $$
+
 Here, $Y$ is the outcome variable, $D$ is the treatment variable, $X$ is a vector of confounding factors, and $U,V$ are disturbances. $\theta_0 $ is the target parameter (causal effect) that we would like to infer. $X$ affect the outcome via the treatment assignment via $m_0(X)$ and the outcome variable via the function $g_0(X)$. $(m_0, g_0)$ are the nuisance parameters. The dimension of $X$ is large relative to the sample size $N$ and we allow it to increase with $N$.
 
 **Regularization bias**
 
 To estimate $\theta_0$ using ML methods, we first split our sample into the auxiliary part and the main part. We can construct a sophisticated ML estimator $D\hat{\theta}_0+\hat{g}_0(X)$,  learning the regression function using auxiliary data, and obtaining $\hat{g}_0$. The final estimate of $\theta_0$ is obtained using the main sample:
+
 $$
 \hat{\theta}_0=\left(\frac{1}{n} \sum_{i \in I} D_i^2\right)^{-1} \frac{1}{n} \sum_{i \in I} D_i\left(Y_i-\hat{g}_0\left(X_i\right)\right) .
 $$
+
 The estimator $\hat{\theta}_0$ will generally have a rate of convergence slower than $n^{-\frac{1}{2}}$. As detailed below, the driving force behind this inferior behavior is the bias in learning $\hat{g}_0$.
 
 We decompose the scaled estimation error as 
+
 $$
 \sqrt{n}\left(\hat{\theta}_0-\theta_0\right)=\underbrace{\left(\frac{1}{n} \sum_{i \in I} D_i^2\right)^{-1} \frac{1}{\sqrt{n}} \sum_{i \in I} D_i U_i}_{:=a}+\underbrace{\left(\frac{1}{n} \sum_{i \in I} D_i^2\right)^{-1} \frac{1}{\sqrt{n}} \sum_{i \in I} D_i\left(g_0\left(X_i\right)-\hat{g}_0\left(X_i\right)\right)}_{:=b} .
 $$
+
 The first term is well-behaved under mild conditions, obeying asyptotically normal. The second term is the regularization bias term, which is not centered and diverges in general. Indeed, we have 
+
 $$
 b=\left(E\left[D_i^2\right]\right)^{-1} \frac{1}{\sqrt{n}} \sum_{i \in I} m_0\left(X_i\right)\left(g_0\left(X_i\right)-\hat{g}_0\left(X_i\right)\right)+o_P(1)
 $$
+
 It is the sum of $n$ terms that do not have a mean zero, $m_0\left(X_i\right)\left(g_0\left(X_i\right)-\hat{g}_0\left(X_i\right)\right)$. These terms have non-zero mean because, in high-dimensional settings, we must employ regularized estimators to estimate $g_0$. The regularization keeps the variance from exploding but necessarily induces bias in the estimation of $g_0$.
 
 This paper removes the bias by (1) using Neyman-orthogonal moments/scores that have reduced sensitivity with respect to nuisance parameters to estimate causal inference; (2) making use of cross-fitting, which provides an efficient form of data-splitting. They call the new set of methods debiased machine learning method (DML).  They also show that the generic statistical theory of DML is elementary and simultaneously relies on only weak theoretical requirements.
