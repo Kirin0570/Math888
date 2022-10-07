@@ -68,17 +68,21 @@ Here, $Y$ is the outcome variable, $D$ is the treatment variable, $X$ is a vecto
 
 To estimate $\theta_0$ using ML methods, we first split our sample into the auxiliary part and the main part. We can construct a sophisticated ML estimator $D\hat{\theta}_0+\hat{g}_0(X)$,  learning the regression function using auxiliary data, and obtaining $\hat{g}_0$. The final estimate of $\theta_0$ is obtained using the main sample:
 
+{{< math >}}
 $$
 \hat{\theta}_0=(\frac{1}{n} \sum_{i \in I} D_i^2)^{-1} \frac{1}{n} \sum_{i \in I} D_i(Y_i-\hat{g}_0(X_i)) .
 $$
+{{< math >}}
 
 The estimator $\hat{\theta}_0$ will generally have a rate of convergence slower than $n^{-\frac{1}{2}}$. As detailed below, the driving force behind this inferior behavior is the bias in learning $\hat{g}_0$.
 
 We decompose the scaled estimation error as 
 
+{{< math >}}
 $$
 \sqrt{n}\left(\hat{\theta}_0-\theta_0\right)=\underbrace{\left(\frac{1}{n} \sum_{i \in I} D_i^2\right)^{-1} \frac{1}{\sqrt{n}} \sum_{i \in I} D_i U_i}_{:=a}+\underbrace{\left(\frac{1}{n} \sum_{i \in I} D_i^2\right)^{-1} \frac{1}{\sqrt{n}} \sum_{i \in I} D_i\left(g_0\left(X_i\right)-\hat{g}_0\left(X_i\right)\right)}_{:=b} .
 $$
+{{< math >}}
 
 The first term is well-behaved under mild conditions, obeying asyptotically normal. The second term is the regularization bias term, which is not centered and diverges in general. Indeed, we have 
 
