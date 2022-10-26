@@ -52,6 +52,7 @@ $$
 
 The first step is from the fact that d-separation implies conditional independence. The third step is by causal irrelevance. The last step is by consistency and causal irrelevance. In fact, we can simply apply the Rule 2 of Po-calculus here which is equivalent to these four steps.
 
+
 On the other hand, by backdoor adjustment, 
 
 {{< math >}}
@@ -69,6 +70,8 @@ $$
 {{< math >}}
 
 In this way, we express the causal effect in terms of observed random variables. The identification is done!
+
+
 
 ## References
 
