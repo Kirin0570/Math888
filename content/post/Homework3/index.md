@@ -39,6 +39,7 @@ The causal effect we are interested in is $\mathbb{E}\left[ C(i)\middle| U \righ
 
 On the one hand, 
 
+{{< math >}}
 $$
 \begin{aligned}
     \mathbb{E}\left[ C(i,u) \right] &= \mathbb{E}\left[ C(i,u)\middle| U=u \right] \\
@@ -47,20 +48,25 @@ $$
     &= \mathbb{E}\left[ C(i)\middle| U=u \right].
 \end{aligned}
 $$
+{{< math >}}
 
 The first step is from the fact that d-separation implies conditional independence. The third step is by causal irrelevance. The last step is by consistency and causal irrelevance. In fact, we can simply apply the Rule 2 of Po-calculus here which is equivalent to these four steps.
 
 On the other hand, by backdoor adjustment, 
 
+{{< math >}}
 $$
-\mathbb{E}\left[ C(i,u) \right]=\mathbb{E}\left\{\mathbb{E}\left[ C\middle|I=i,U=u,Z \right]\right\}.
+\mathbb{E}\left[ C(i,u) \right]=\mathbb{E}\left\{\mathbb{E}\left[ C \middle| I=i,U=u,Z \right ]\right\}.
 $$
+{{< math >}}
 
 Therefore,
 
+{{< math >}}
 $$
-\mathbb{E}\left[ C(i)\middle| U=u \right]=\mathbb{E}\left\{\mathbb{E}\left[ C\middle|I=i,U=u,Z \right]\right\}.
+\mathbb{E}\left[ C(i)\middle| U=u \right]=\mathbb{E}\left\{\mathbb{E}\left[ C\middle| I=i,U=u,Z \right]\right\}.
 $$
+{{< math >}}
 
 In this way, we express the causal effect in terms of observed random variables. The identification is done!
 
