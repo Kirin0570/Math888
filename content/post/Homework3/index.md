@@ -25,7 +25,7 @@ authors:
   - admin
 ---
 
-Recall that in [Homework 2](https://qilin-li-math-888.netlify.app/post/homework2/), we have created a causal graph with 5 nodes. In a recent work on popularity bias [<sup>1</sup>](#PDA), Zhang et al. (2021) studies a special case where the only item attribute considered is its popularity which is characterized as a confounder. The following figure shows this special case.
+Recall that in [Homework 2](https://qilin-li-math-888.netlify.app/post/homework2/), we have created a causal graph with 5 nodes. In a recent work on popularity bias , [Zhang et al. (2021)](#PDA) studies a special case where the only item attribute considered is its popularity which is characterized as a confounder. The following figure shows this special case.
 
 ![CG](CG.jpg)
 
