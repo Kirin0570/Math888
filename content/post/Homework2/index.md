@@ -58,7 +58,7 @@ This survey also discusses some open problems:
 
 <div id ="survey"></div>
 
-- [2] [Causal Inference in Recommender Systems: A Survey and Future Directions]([https://dl.acm.org/doi/abs/10.1145/3383313.3412225](https://arxiv.org/abs/2208.12397))
+- [2] [Causal Inference in Recommender Systems: A Survey and Future Directions](https://arxiv.org/abs/2208.12397)
 
 
 
