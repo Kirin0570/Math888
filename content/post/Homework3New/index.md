@@ -45,10 +45,10 @@ On the one hand,
 {{< math >}}
 $$
 \begin{aligned}
-    \mathbb{E}\left[ C(i,u) \right] &= \mathbb{E}\left[ C(i,u)\middle| U=u \right] \\
-    &= \mathbb{E}\left[ C(i,U)\middle| U=u \right] \\
-    &= \mathbb{E}\left[ C(i,U(i))\middle| U(i)=u \right] \\
-    &= \mathbb{E}\left[ C(i)\middle| U=u \right].
+    \mathbb{E}\left[ C(i,u) \right] = \mathbb{E}\left[ C(i,u)\middle| U=u \right] \\
+    = \mathbb{E}\left[ C(i,U)\middle| U=u \right] \\
+    = \mathbb{E}\left[ C(i,U(i))\middle| U(i)=u \right] \\
+    = \mathbb{E}\left[ C(i)\middle| U=u \right].
 \end{aligned}
 $$
 {{< /math >}}
