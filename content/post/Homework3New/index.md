@@ -1,5 +1,5 @@
 ---
-title: Popularity-bias Deconfounding and Adjusting (PDA) - Identification 
+title: Popularity-bias Deconfounding (PD) - Identification 
 
 # Date published
 date: '2022-10-25T00:00:00Z'
@@ -45,10 +45,10 @@ On the one hand,
 {{< math >}}
 $$
 \begin{aligned}
-    \mathbb{E}\left[ C(i,u) \right] = \mathbb{E}\left[ C(i,u)\middle| U=u \right] \\
-    = \mathbb{E}\left[ C(i,U)\middle| U=u \right] \\
-    = \mathbb{E}\left[ C(i,U(i))\middle| U(i)=u \right] \\
-    = \mathbb{E}\left[ C(i)\middle| U=u \right].
+    \mathbb{E}\left[ C(i,u) \right] &= \mathbb{E}\left[ C(i,u)\middle| U=u \right] \\
+    &= \mathbb{E}\left[ C(i,U)\middle| U=u \right] \\
+    &= \mathbb{E}\left[ C(i,U(i))\middle| U(i)=u \right] \\
+    &= \mathbb{E}\left[ C(i)\middle| U=u \right].
 \end{aligned}
 $$
 {{< /math >}}
@@ -83,10 +83,10 @@ The original one can be written as
 {{< math >}}
 $$
 \begin{aligned}
-    \mathbb{E}\left[ C\middle| I=i, U=u  \right] &= \mathbb{P}\left( C=1\middle| I=i , U=u \right) \\
-    &= \sum_z\mathbb{P}\left[ C=1\middle| I=i,U=u ,Z=z \right]\mathbb{P}\left(Z=z\middle| I=i,U=u\right) \\
-    &= \sum_z\mathbb{P}\left[ C=1\middle| I=i,U=u ,Z=z \right]\mathbb{P}\left(Z=z\middle| I=i\right) \\
-    &\propto \sum_z\mathbb{P}\left[ C=1\middle| I=i,U=u ,Z=z \right]\mathbb{P}\left(I=i\middle| Z=z\right)\mathbb{P}\left( Z=z \right).
+    \mathbb{E}\left[ C\middle| I=i, U=u  \right] = \mathbb{P}\left( C=1\middle| I=i , U=u \right) \\
+    = \sum_z\mathbb{P}\left[ C=1\middle| I=i,U=u ,Z=z \right]\mathbb{P}\left(Z=z\middle| I=i,U=u\right) \\
+    = \sum_z\mathbb{P}\left[ C=1\middle| I=i,U=u ,Z=z \right]\mathbb{P}\left(Z=z\middle| I=i\right) \\
+    \propto \sum_z\mathbb{P}\left[ C=1\middle| I=i,U=u ,Z=z \right]\mathbb{P}\left(I=i\middle| Z=z\right)\mathbb{P}\left( Z=z \right).
 \end{aligned}
 $$
 {{< /math >}}
