@@ -35,12 +35,15 @@ $$
 To estimate the statistical estimand on the RHS, we first estimate $\mathbb{P}\left( C=1\middle|I=i,U=u,Z \right)$. This can be down with some traditional recommendation training method. For example, optimizing the pairwise BPR objective function on historical data $\mathcal{D}$:
 {{< math >}}
 $$
-\max_\Theta \sum_{(u,i,j)\in\mathcal{D}} \log\left( \mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_i^t \right) - \mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_j^t \right) \right) - \lambda\left\Vert \Theta \right\Vert_2^2,
+\begin{aligned}
+  \max_\Theta \sum_{(u,i,j)\in\mathcal{D}} & \log\left( \mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_i^t \right) \\
+  & - \mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_j^t \right) \right) - \lambda\left\Vert \Theta \right\Vert_2^2,
+\end{aligned}
 $$
 {{< /math >}}
 where $\Theta$ denotes the parameters modeling $\mathbb{P}\left( C=1\middle|I=i,U=u,Z \right)$, $j$ denotes the negative sample for $u$, $\sigma (\cdot)$ is the sigmoid function.
 
-It remains to show how to parameterize $\mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_i^t \right)$ specifically. To decouple the user-item match with item popularity, we design the model as:
+It remains to show how to parameterize {{< math >}}$\mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_i^t \right)${{< /math >}} specifically. To decouple the user-item match with item popularity, we design the model as:
 {{< math >}}
 $$
 \mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_i^t \right) = ELU'(f_\Theta (u,i))\times (m_i^t)^\gamma,
@@ -49,9 +52,17 @@ $$
 where $f_\Theta (u,i)$ can be any user-item mathcing model and we choose the simple _Matrix Factorization_ (MF) here; hyperparameter $\gamma$ is to control the strenth of conformity effect. $ELU'(\cdot)$ is a variant of the Exponential Unit active function that ensures the positivity of the matching score:
 {{< math >}}
 $$
-\mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_i^t \right) = ELU'(f_\Theta (u,i))\times (m_i^t)^\gamma,
+\begin{equation}
+ELU'(x)=
+    \begin{cases}
+        e^x & \text{if } x \leq 0\\
+        x+1 & \text{else }.
+    \end{cases}
+\end{equation}
 $$
 {{< /math >}}
+
+Lastly, since we are only interested in the rank of items, we do not need to normalize the estimation to make it a rigorous probability.
 
 In a recent work [<sup>1</sup>](#PDA), Zhang et al. (2021) characterized the item popularity as a confounder, and then developed a method, Popularity-bias Deconfounding(PD), to eliminate popularity bias in recommendation. The following causal graph shows the assumptions they made on how the training data is generated.
 
