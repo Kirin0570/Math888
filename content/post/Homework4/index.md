@@ -36,8 +36,8 @@ To estimate the statistical estimand on the RHS, we first estimate $\mathbb{P}\l
 {{< math >}}
 $$
 \begin{aligned}
-  \max_\Theta \sum_{(u,i,j)\in\mathcal{D}} \log\left( \mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_i^t \right) \\
-  - \mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_j^t \right) \right) - \lambda\left\Vert \Theta \right\Vert_2^2,
+  \max_\Theta \sum_{(u,i,j)\in\mathcal{D}} \log( \mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_i^t \right) \\
+  - \mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_j^t \right) ) - \lambda\left\Vert \Theta \right\Vert_2^2,
 \end{aligned}
 $$
 {{< /math >}}
