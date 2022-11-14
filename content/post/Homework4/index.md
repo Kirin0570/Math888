@@ -2,7 +2,7 @@
 title: Popularity-bias Deconfounding (PD) - Estimation 
 
 # Date published
-date: '2022-11-16T00:00:00Z'
+date: '2022-11-14T00:00:00Z'
 
 # Date updated
 #lastmod: '2022-25-4T00:00:00Z'
