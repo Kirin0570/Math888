@@ -80,20 +80,7 @@ Notice that {{< math >}}$ \mathbb{E}\left[Z^\gamma\right] ${{< /math >}} is a co
 To summarize, we fit the historical interaction data with {{< math >}}$\mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_i^t \right)${{< /math >}}, and use the user-item matching component {{< math >}}$ ELU'(f_\Theta (u,i)) ${{< /math >}} for deconfounded ranking. We name this method as Popularity-bias Deconfounding (PD). Combined with cross-validation, we have the following algorithm.
 
 
-<pre class="pseudocode" lineNumber="true">
-% This quicksort algorithm is extracted from Chapter 7, Introduction to Algorithms (3rd edition)
-\begin{algorithm}
-\caption{PD}
-\begin{algorithmic}
-\INPUT dataset $\mathcal{D}=\{(u,i,m_i^t)\}$; hyper-parameter $\gamma$
-\WHILE{stop condition is not satisfied}
-    \STATE update model parameters $\Theta$ by optimizing the pairwise BPR objective function;
-    \STATE validate model with $ ELU'(f_\Theta (u,i)) $;
-\ENDWHILE
-\STATE recommend items using $ ELU'(f_\Theta (u,i)) $;
-\end{algorithmic}
-\end{algorithm}
-</pre>
+![algo1](algo1.png)
 
 
 
