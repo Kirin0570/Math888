@@ -79,7 +79,7 @@ $$
 
 Notice that {{< math >}}$ \mathbb{E}\left[Z^\gamma\right] ${{< /math >}} is a constant. Ignoring it will not affect ranking. Hence, we can simply use {{< math >}}$ ELU'(f_\Theta (u,i)) ${{< /math >}} to estimate {{< math >}}$\mathbb{E}\left[ C(i)\middle| U=u \right]${{< /math >}}.
 
-To summarize, we fit the historical interaction data with {{< math >}}$\mathbb{E}_\Theta \left[ C\middle|I=i,U=u,Z=m_i^t \right]${{< /math >}}, and use the user-item matching component {{< math >}}$ ELU'(f_\Theta (u,i)) ${{< /math >}} for deconfounded ranking. We name this method as Popularity-bias Deconfounding (PD). Combined with cross-validation, we have the following algorithm.
+To summarize, we fit the historical interaction data with {{< math >}}$\mathbb{E}_\Theta \left[ C\middle|I=i,U=u,Z=m_i^t \right]${{< /math >}}, and use the user-item matching component {{< math >}}$ ELU'(f_\Theta (u,i)) ${{< /math >}} for deconfounded ranking. We name this method as _Popularity-bias Deconfounding_ (PD). Combined with cross-validation, we have the following algorithm.
 
 ![algo1](algo1.PNG)
 
@@ -93,7 +93,20 @@ In this article, experiments are conducted on three datasets. We summarize them 
 | Douban Movie  | rating | 7,174,218 interactions between 47,890 users and 26,047 items |
 | Tencent | likes | 1,816,046 interactions between 80,339 users and 27,070 items |
 
-From the table above, we can see that although we call $C$ "clicking", it is not necessary to be 0-1 value. It can be integer-valued or continuously valued rating. That is why this blog use the notation $\mathbb{E}[C\ldots]$ instead of $\mathbb{P}(C=1\ldots)$ as in the orinal paper. 
+From the table above, we can see that although we call $C$ "clicking", it is not necessary to be 0-1 value. It can be integer-valued or continuously valued rating. This is why this blog use the notation $\mathbb{E}[C\ldots]$ instead of $\mathbb{P}(C=1\ldots)$ as in the orinal paper[<sup>1</sup>](#PDA).  As shown above, this method can be applied on large scale dataset. "Likes" are a little bit different from "clicking" since they are much more sparse. This is the reason why for the third dataset, we requires more interactions (we can manipulate the dataset by change the number of cores for filtering).
+
+## Performance
+
+The proposed method (PD) are compared with a bunch of baseline methods, from heuristic methods like **MostPop** and **MostRecent**, to methods withour popularity adjustment such as **BPRMF** and state-of-art methods to handle popularity bias such as **BPR-PC** and **DICE** and so on. The propsed PD consistently outperforms all the baselines on all datasets. The degree of improvement depends on popularity properties of the datasets. Higher popularity drifts imply that item popularity $Z$ has larger impact on the recommendation data and PD achieves higher degree of improvement. 
+
+A recommendation analysis is conducted on some of these methods to show how much the recommendation favors popular items. In order to compare, they first design a metric called _Recommendation Rate_ (RR). First, they sort the items in the recommendation list according to their popularity in descending order. Then, cut the sorted list into 10 pieces (groups) so that each group shares the same total popularity (the sum of popularity over all items). Now, we can define the RR of group $g$ as the ratio of the number of items comming from the group $g$ over the total number of recommended items. Formally, it can be define as 
+
+{{< math >}}
+$$
+RR(g,algo)=\frac{\sum_{i\in Group_g} RC(i,algo)}{\sum_{i\in Group_g} RC(i,algo)}
+$$
+{{< /math >}}
+
 
 
 ## References
