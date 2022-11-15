@@ -25,6 +25,8 @@ authors:
   - admin
 ---
 
+## Estimation method
+
 Last time, we have identified the followiing causal effect.
 {{< math >}}
 $$
@@ -79,9 +81,17 @@ Notice that {{< math >}}$ \mathbb{E}\left[Z^\gamma\right] ${{< /math >}} is a co
 
 To summarize, we fit the historical interaction data with {{< math >}}$\mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_i^t \right)${{< /math >}}, and use the user-item matching component {{< math >}}$ ELU'(f_\Theta (u,i)) ${{< /math >}} for deconfounded ranking. We name this method as Popularity-bias Deconfounding (PD). Combined with cross-validation, we have the following algorithm.
 
-
 ![algo1](algo1.PNG)
 
+## Dataset
+
+In this article, experiments are conducted on three datasets. We summarize them in the following table.
+
+|  dataset   | output type  | size |
+|  ----  | ----  | ----  |
+| Kwai  | clicking | 7,658,510 interactions between 37,663 users and 128,879 items |
+| Douban Movie  | rating | 7,174,218 interactions between 47,890 users and 26,047 items |
+| Tencent | likes | 1,816,046 interactions between 80,339 users and 27,070 items |
 
 
 
