@@ -34,21 +34,21 @@ $$
 $$
 {{< /math >}}
 
-To estimate the statistical estimand on the RHS, we first estimate $\mathbb{P}\left( C=1\middle|I=i,U=u,Z \right)$. This can be down with some traditional recommendation training method. For example, optimizing the pairwise BPR objective function on historical data $\mathcal{D}$:
+To estimate the statistical estimand on the RHS, we first estimate $\mathbb{E}\left[ C\middle|I=i,U=u,Z \right]$. This can be down with some traditional recommendation training method. For example, optimizing the pairwise BPR objective function on historical data $\mathcal{D}$:
 {{< math >}}
 $$
 \begin{aligned}
   \max_\Theta \sum_{(u,i,j)\in\mathcal{D}} \log \sigma ( \mathbb{E}_\Theta \left[ C\middle|I=i,U=u,Z=m_i^t \right] \\
-  - \mathbb{E}_\Theta \left[ C=1\middle|I=i,U=u,Z=m_j^t \right] ) - \lambda\left\Vert \Theta \right\Vert_2^2,
+  - \mathbb{E}_\Theta \left[ C\middle|I=i,U=u,Z=m_j^t \right] ) - \lambda\left\Vert \Theta \right\Vert_2^2,
 \end{aligned}
 $$
 {{< /math >}}
-where $\Theta$ denotes the parameters modeling $\mathbb{E}\left[ C=1\middle|I=i,U=u,Z \right]$, $j$ denotes the negative sample for $u$, $\sigma (\cdot)$ is the sigmoid function.
+where $\Theta$ denotes the parameters modeling $\mathbb{E}\left[ C\middle|I=i,U=u,Z \right]$, $j$ denotes the negative sample for $u$, $\sigma (\cdot)$ is the sigmoid function.
 
-It remains to show how to parameterize {{< math >}}$\mathbb{E}_\Theta \left[ C=1\middle|I=i,U=u,Z=m_i^t \right]${{< /math >}} specifically. To decouple the user-item match with item popularity, we design the model as:
+It remains to show how to parameterize {{< math >}}$\mathbb{E}_\Theta \left[ C\middle|I=i,U=u,Z=m_i^t \right]${{< /math >}} specifically. To decouple the user-item match with item popularity, we design the model as:
 {{< math >}}
 $$
-\mathbb{E}_\Theta \left[ C=1\middle|I=i,U=u,Z=m_i^t \right] = ELU'(f_\Theta (u,i))\times (m_i^t)^\gamma,
+\mathbb{E}_\Theta \left[ C\middle|I=i,U=u,Z=m_i^t \right] = ELU'(f_\Theta (u,i))\times (m_i^t)^\gamma,
 $$
 {{< /math >}}
 where $f_\Theta (u,i)$ can be any user-item mathcing model and we choose the simple _Matrix Factorization_ (MF) here; hyperparameter $\gamma$ is to control the strenth of conformity effect. $ELU'(\cdot)$ is a variant of the Exponential Unit active function that ensures the positivity of the matching score:
@@ -66,12 +66,12 @@ $$
 
 Lastly, since we are only interested in the rank of items, we do not need to normalize the estimation to make it a rigorous probability.
 
-Now we move forward to estimate {{< math >}}$\mathbb{E}\left\{\mathbb{E}\left[ C\middle|I=i,U=u,Z \right]\right\}${{< /math >}}. Plug in the model for {{< math >}}$\mathbb{E}_\Theta \left[ C=1\middle|I=i,U=u,Z \right]${{< /math >}}. 
+Now we move forward to estimate {{< math >}}$\mathbb{E}\left\{\mathbb{E}\left[ C\middle|I=i,U=u,Z \right]\right\}${{< /math >}}. Plug in the model for {{< math >}}$\mathbb{E}_\Theta \left[ C\middle|I=i,U=u,Z \right]${{< /math >}}. 
 
 {{< math >}}
 $$
 \begin{align}
-    \mathbb{E}\left\{\mathbb{E}\left[ C\middle|I=i,U=u,Z \right]\right\} & = \mathbb{E}\left\{\mathbb{E}_\Theta \left[ C=1\middle|I=i,U=u,Z \right]\right\} \\
+    \mathbb{E}\left\{\mathbb{E}\left[ C\middle|I=i,U=u,Z \right]\right\} & = \mathbb{E}\left\{\mathbb{E}_\Theta \left[ C\middle|I=i,U=u,Z \right]\right\} \\
     & = ELU'(f_\Theta (u,i))\times \mathbb{E}\left[Z^\gamma\right].
 \end{align}
 $$
@@ -79,7 +79,7 @@ $$
 
 Notice that {{< math >}}$ \mathbb{E}\left[Z^\gamma\right] ${{< /math >}} is a constant. Ignoring it will not affect ranking. Hence, we can simply use {{< math >}}$ ELU'(f_\Theta (u,i)) ${{< /math >}} to estimate {{< math >}}$\mathbb{E}\left[ C(i)\middle| U=u \right]${{< /math >}}.
 
-To summarize, we fit the historical interaction data with {{< math >}}$\mathbb{E}_\Theta \left[ C=1\middle|I=i,U=u,Z=m_i^t \right]${{< /math >}}, and use the user-item matching component {{< math >}}$ ELU'(f_\Theta (u,i)) ${{< /math >}} for deconfounded ranking. We name this method as Popularity-bias Deconfounding (PD). Combined with cross-validation, we have the following algorithm.
+To summarize, we fit the historical interaction data with {{< math >}}$\mathbb{E}_\Theta \left[ C\middle|I=i,U=u,Z=m_i^t \right]${{< /math >}}, and use the user-item matching component {{< math >}}$ ELU'(f_\Theta (u,i)) ${{< /math >}} for deconfounded ranking. We name this method as Popularity-bias Deconfounding (PD). Combined with cross-validation, we have the following algorithm.
 
 ![algo1](algo1.PNG)
 
