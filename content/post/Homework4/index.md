@@ -108,6 +108,8 @@ $$
 {{< /math >}}
 where $RC(i,algo)$ gives the number of times the algorithm $algo$ recommends item $i$ in the recommendation list.
 
+![RR](RR.jpeg)
+
 As the figure above shows, although still going down, PD exhibits lines that are flatter than other methods, which means it performs better at eiliminating the effect of popularity when recommending items. 
 
 
