@@ -106,7 +106,9 @@ $$
 RR(g,algo)=\frac{\sum_{i\in Group_g} RC(i,algo)}{\sum_{i\in Group_g} RC(i,algo)}
 $$
 {{< /math >}}
+where $RC(i,algo)$ gives the number of times the algorithm $algo$ recommends item $i$ in the recommendation list.
 
+As the figure above shows, although still going down, PD exhibits lines that are flatter than other methods, which means it performs better at eiliminating the effect of popularity when recommending items. 
 
 
 ## References
