@@ -38,14 +38,14 @@ To estimate the statistical estimand on the RHS, we first estimate $\mathbb{P}\l
 {{< math >}}
 $$
 \begin{aligned}
-  \max_\Theta \sum_{(u,i,j)\in\mathcal{D}} \log( \mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_i^t \right) \\
-  - \mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_j^t \right) ) - \lambda\left\Vert \Theta \right\Vert_2^2,
+  \max_\Theta \sum_{(u,i,j)\in\mathcal{D}} \log \sigma ( \mathbb{E}_\Theta \left[ C\middle|I=i,U=u,Z=m_i^t \right] \\
+  - \mathbb{E}_\Theta \left[ C=1\middle|I=i,U=u,Z=m_j^t \right] ) - \lambda\left\Vert \Theta \right\Vert_2^2,
 \end{aligned}
 $$
 {{< /math >}}
-where $\Theta$ denotes the parameters modeling $\mathbb{P}\left( C=1\middle|I=i,U=u,Z \right)$, $j$ denotes the negative sample for $u$, $\sigma (\cdot)$ is the sigmoid function.
+where $\Theta$ denotes the parameters modeling $\mathbb{E}\left[ C=1\middle|I=i,U=u,Z \right]$, $j$ denotes the negative sample for $u$, $\sigma (\cdot)$ is the sigmoid function.
 
-It remains to show how to parameterize {{< math >}}$\mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_i^t \right)${{< /math >}} specifically. To decouple the user-item match with item popularity, we design the model as:
+It remains to show how to parameterize {{< math >}}$\mathbb{E}_\Theta \left[ C=1\middle|I=i,U=u,Z=m_i^t \right]${{< /math >}} specifically. To decouple the user-item match with item popularity, we design the model as:
 {{< math >}}
 $$
 \mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_i^t \right) = ELU'(f_\Theta (u,i))\times (m_i^t)^\gamma,
@@ -83,12 +83,12 @@ To summarize, we fit the historical interaction data with {{< math >}}$\mathbb{P
 
 ![algo1](algo1.PNG)
 
-## Dataset
+## Datasets
 
 In this article, experiments are conducted on three datasets. We summarize them in the following table.
 
 |  dataset   | output type  | size |
-|  ----  | ----  | ----  |
+|  :----:  | :----:  | :----:  |
 | Kwai  | clicking | 7,658,510 interactions between 37,663 users and 128,879 items |
 | Douban Movie  | rating | 7,174,218 interactions between 47,890 users and 26,047 items |
 | Tencent | likes | 1,816,046 interactions between 80,339 users and 27,070 items |
