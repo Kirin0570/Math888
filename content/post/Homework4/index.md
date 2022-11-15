@@ -64,6 +64,10 @@ $$
 
 Lastly, since we are only interested in the rank of items, we do not need to normalize the estimation to make it a rigorous probability.
 
+Now we move forward to estimate $\mathbb{E}\left\{\mathbb{E}\left[ C\middle|I=i,U=u,Z \right]\right\}$
+
+
+
 In a recent work [<sup>1</sup>](#PDA), Zhang et al. (2021) characterized the item popularity as a confounder, and then developed a method, Popularity-bias Deconfounding(PD), to eliminate popularity bias in recommendation. The following causal graph shows the assumptions they made on how the training data is generated.
 
 ![CG](CG.png)
