@@ -70,12 +70,19 @@ Now we move forward to estimate {{< math >}}$\mathbb{E}\left\{\mathbb{E}\left[ C
 $$
 \begin{align}
     \mathbb{E}\left\{\mathbb{E}\left[ C\middle|I=i,U=u,Z \right]\right\} & = \mathbb{E}\left\{\mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z \right)\right\} \\
-    & = ELU'(f_\Theta (u,i))\times \mathbb{E}\left\[(Z)^\gamma\right\].
+    & = ELU'(f_\Theta (u,i))\times \mathbb{E}\left[Z^\gamma\right].
 \end{align}
 $$
 {{< /math >}}
 
-Notice that {{< math >}}$ \mathbb{E}\left\[(Z)^\gamma\right\] ${{< /math >}} is a constant. Ignoring it will not affect ranking. Hence, we can simply use {{< math >}}$ ELU'(f_\Theta (u,i)) ${{< /math >}} to estimate {{< math >}}$\mathbb{E}\left[ C(i)\middle| U=u \right]${{< /math >}}.
+Notice that {{< math >}}$ \mathbb{E}\left[Z^\gamma\right] ${{< /math >}} is a constant. Ignoring it will not affect ranking. Hence, we can simply use {{< math >}}$ ELU'(f_\Theta (u,i)) ${{< /math >}} to estimate {{< math >}}$\mathbb{E}\left[ C(i)\middle| U=u \right]${{< /math >}}.
+
+To summarize, we fit the historical interaction data with {{< math >}}$\mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_i^t \right)${{< /math >}}, and use the user-item matching component {{< math >}}$ ELU'(f_\Theta (u,i)) ${{< /math >}} for deconfounded ranking. We name this method as Popularity-bias Deconfounding (PD). Combined with cross-validation, we have the following algorithm.
+
+
+
+
+
 
 
 
