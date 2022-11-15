@@ -93,7 +93,7 @@ In this article, experiments are conducted on three datasets. We summarize them 
 | Douban Movie  | rating | 7,174,218 interactions between 47,890 users and 26,047 items |
 | Tencent | likes | 1,816,046 interactions between 80,339 users and 27,070 items |
 
-
+From the table above, we can see that although we call $C$ "clicking", it is not necessary to be 0-1 value. It can be integer-valued or continuously valued rating. That is why this blog use the notation $\mathbb{E}[C\ldots]$ instead of $\mathbb{P}(C=1\ldots)$ as in the orinal paper. 
 
 
 ## References
