@@ -52,19 +52,32 @@ $$
 where $f_\Theta (u,i)$ can be any user-item mathcing model and we choose the simple _Matrix Factorization_ (MF) here; hyperparameter $\gamma$ is to control the strenth of conformity effect. $ELU'(\cdot)$ is a variant of the Exponential Unit active function that ensures the positivity of the matching score:
 {{< math >}}
 $$
-\begin{equation}
+\begin{equation*}
 ELU'(x)=
     \begin{cases}
         e^x & \text{if } x \leq 0\\
         x+1 & \text{else }.
     \end{cases}
-\end{equation}
+\end{equation*}
 $$
 {{< /math >}}
 
 Lastly, since we are only interested in the rank of items, we do not need to normalize the estimation to make it a rigorous probability.
 
-Now we move forward to estimate {{< math >}}$\mathbb{E}\left\{\mathbb{E}\left[ C\middle|I=i,U=u,Z \right]\right\}${{< /math >}}
+Now we move forward to estimate {{< math >}}$\mathbb{E}\left\{\mathbb{E}\left[ C\middle|I=i,U=u,Z \right]\right\}${{< /math >}}. Plug in the model for {{< math >}}$\mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z=m_i^t \right)${{< /math >}}. 
+
+{{< math >}}
+$$
+\begin{align}
+    \mathbb{E}\left\{\mathbb{E}\left[ C\middle|I=i,U=u,Z \right]\right\} & = \mathbb{E}\left\{\mathbb{P}_\Theta \left( C=1\middle|I=i,U=u,Z \right)\right\} \\
+    & = ELU'(f_\Theta (u,i))\times \mathbb{E}\left\[(Z)^\gamma\right\].
+\end{align}
+$$
+{{< /math >}}
+
+Notice that {{< math >}}$ \mathbb{E}\left\[(Z)^\gamma\right\] ${{< /math >}} is a constant. Ignoring it will not affect ranking. Hence, we can simply use {{< math >}}$ ELU'(f_\Theta (u,i)) ${{< /math >}} to estimate {{< math >}}$\mathbb{E}\left[ C(i)\middle| U=u \right]${{< /math >}}.
+
+
 
 
 
