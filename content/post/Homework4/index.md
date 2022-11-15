@@ -64,7 +64,7 @@ $$
 
 Lastly, since we are only interested in the rank of items, we do not need to normalize the estimation to make it a rigorous probability.
 
-Now we move forward to estimate $\mathbb{E}\left\{\mathbb{E}\left[ C\middle|I=i,U=u,Z \right]\right\}$
+Now we move forward to estimate {{< math >}}$\mathbb{E}\left\{\mathbb{E}\left[ C\middle|I=i,U=u,Z \right]\right\}${{< /math >}}
 
 
 
