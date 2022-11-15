@@ -97,7 +97,9 @@ From the table above, we can see that although we call $C$ "clicking", it is not
 
 ## Performance
 
-The proposed method (PD) are compared with a bunch of baseline methods, from heuristic methods like **MostPop** and **MostRecent**, to methods withour popularity adjustment such as **BPRMF** and state-of-art methods to handle popularity bias such as **BPR-PC** and **DICE** and so on. The propsed PD consistently outperforms all the baselines on all datasets. The degree of improvement depends on popularity properties of the datasets. Higher popularity drifts imply that item popularity $Z$ has larger impact on the recommendation data and PD achieves higher degree of improvement. 
+The proposed method (PD) are compared with a bunch of baseline methods, from heuristic methods like **MostPop** and **MostRecent**, to methods withour popularity adjustment such as **BPRMF** and state-of-art methods to handle popularity bias such as **BPR-PC** and **DICE** and so on. The propsed PD consistently outperforms all the baselines on all datasets. The degree of improvement depends on popularity properties of the datasets. Higher popularity drifts imply that item popularity $Z$ has larger impact on the recommendation data and PD achieves higher degree of improvement. The details are shown in the following table.
+
+![table1](table1.jpeg)
 
 A recommendation analysis is conducted on some of these methods to show how much the recommendation favors popular items. In order to compare, they first design a metric called _Recommendation Rate_ (RR). First, they sort the items in the recommendation list according to their popularity in descending order. Then, cut the sorted list into 10 pieces (groups) so that each group shares the same total popularity (the sum of popularity over all items). Now, we can define the RR of group $g$ as the ratio of the number of items comming from the group $g$ over the total number of recommended items. Formally, it can be define as 
 
