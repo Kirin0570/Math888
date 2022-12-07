@@ -27,7 +27,7 @@ authors:
 
 The original article [<sup>1</sup>](#PDA), the authors focus on the method for identification and estimation, while do not put much effort in discussing the assumptions. There is no sensitivity analysis part in the article. However, the authors do make some important assumptions that worth discussion. One of those assumptions is that the populairty($Z$) is the only counfouder between the item($I$) and the outcome($C$). This assumption is nontrivial since there might be other factors get involved in the process of recommendation but we fail to take them into account. When this assumption is violated, there will be an unmeasured confounder $UC$ between $I$ and $C$ (as the following figure shows). Hence, we can apply sensitivity analysis here to discuss our assumption. In this blog, I will try to apply those methods we learned inclass to this problem.
 
-Recall that the causal estimand we are interested in is $\mathbb{E}\left[C(i)\middle| U=u\rigth]$. For the following parts, we focus on comparing the outcomes of treatment assignments $i$ and $j$ while condition on $U$. In mathematical words, we are intersted in the following quantity
+Recall that the causal estimand we are interested in is {{< math >}}$\mathbb{E}\left[C(i)\middle| U=u\rigth]${{< /math >}}. For the following parts, we focus on comparing the outcomes of treatment assignments $i$ and $j$ while condition on $U$. In mathematical words, we are intersted in the following quantity
 {{< math >}}
 $$
 $$
