@@ -82,9 +82,19 @@ $$
 
 These bounds do not contain $Z$ since PD is a procedure to deconfound $Z$. Although it doe not matter whether $Z$ is measured, we do need to worry about confounders other than popularity. This is because by specifying the estimation model, $Z$ can only represent popularity and it does not make sense to include other confounders into $Z$. In other words, PD deconfound only the popularity rather than arbitrary unmeasured confounder. Hence, it is worthy to de sensitivity analysis. 
 
+Although we obtain the bound above, it probably too loose to draw some satisfying conclusion, which is a cost of the generality of Manski's method.
+
 ## Other methods
 
-We can also resort to Rosenbaum's and VanderWeele's methods for sensitivity analysis. However, the methods we learned in class are all for binary intervention. I am not sure how to general them into multi-level case. There is a work 
+We can also resort to Rosenbaum's and VanderWeele's methods for sensitivity analysis. However, the methods we learned in class are all for binary intervention. I am not sure how to general them into multi-level case. 
+
+There is a work [<sup>2</sup>](#SA) on recommender system which provides sensitivity analysis. However, they work on a different causal graph where the intervention (the exposure status) is still binary. Figure 2 shows this graph.
+
+![2](2.jpeg)
+
+Their method is also different. First, they show exsiting propensity-based methods, such as IPS estimator and DR estimator, are biased in the presence of unmeasured confounders. Then, they proposed a robust deconfounder framework based on the idea of sensitivity analysis on propensity score model. Specificaaly, they use gamma sensitivity in Rosenbaum's method. 
+
+In short, there exists some work apply sensitivity ananlysis in the context of recommender system, but they are restricted and fail to work in the setting we discuss. It may be still an open problem that how to perform appropriate sensitivity analysis in our setting.
 
 
 
@@ -93,3 +103,6 @@ We can also resort to Rosenbaum's and VanderWeele's methods for sensitivity anal
 <div id ="PDA"></div>
 
 - [1] [Causal Intervention for Leveraging Popularity Bias in Recommendation](https://arxiv.org/abs/2105.06067v1)
+
+<div id ="SA"></div>
+- [2] [Addressing Unmeasured Confounder for Recommendation with Sensitivity Analysis](https://dl.acm.org/doi/abs/10.1145/3534678.3539240)
