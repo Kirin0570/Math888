@@ -1,4 +1,4 @@
-[---
+---
 title: Popularity-bias Deconfounding (PD) - Sensitivity analysis
 
 # Date published
