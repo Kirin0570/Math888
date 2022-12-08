@@ -105,4 +105,5 @@ In short, there exists some work apply sensitivity ananlysis in the context of r
 - [1] [Causal Intervention for Leveraging Popularity Bias in Recommendation](https://arxiv.org/abs/2105.06067v1)
 
 <div id ="SA"></div>
+
 - [2] [Addressing Unmeasured Confounder for Recommendation with Sensitivity Analysis](https://dl.acm.org/doi/abs/10.1145/3534678.3539240)
